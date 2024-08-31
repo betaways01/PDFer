@@ -34,7 +34,7 @@ graph TD
     K --> L[Combine Plain and Structured Text]
 
     L --> M[Save Text as UTF-8]
-    M --> N[Store in Cloud (AWS S3, etc.)]
+    M --> N["Store in Cloud (AWS S3 and others)"]
 
     N --> O[Generate Download Link]
     O --> P[Return Success Response to User]
