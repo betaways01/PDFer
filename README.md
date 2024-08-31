@@ -45,20 +45,20 @@ graph TD
 
 ### Prerequisites
 
-- Python 3.x
+- Python 3.10.0
 - Virtualenv
 
 ### Setup
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/pdf-to-text-conversion-tool.git
-    cd pdf-to-text-conversion-tool
+    git clone https://github.com/betaways01/PDFer.git
+    cd PDFer
     ```
 
 2. **Create a virtual environment**:
     ```bash
-    python3 -m venv venv
+    python3 -m venv pdfer
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
 
