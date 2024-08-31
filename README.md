@@ -1,6 +1,3 @@
-Here’s a `README.md` file template for your Flask app:
-
-```markdown
 # PDF-to-Text Conversion Tool
 
 ## Overview
@@ -119,8 +116,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any issues, questions, or suggestions, feel free to reach out at your.email@example.com.
-
-```
-
-This `README.md` file provides a comprehensive guide to setting up, running, and understanding the features of your Flask app, along with a process flow diagram generated using Mermaid.
+For any issues, questions, or suggestions, feel free to reach out at <betaways01@gmail.com>.
