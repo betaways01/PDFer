@@ -4,23 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preview Extracted Text</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
-        .ocr-text {
-            color: red; /* Different color for text extracted via OCR */
-            font-weight: bold;
-        }
-        .direct-text {
-            color: black; /* Standard color for directly extracted text */
-        }
-        .actions {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/preview.css') }}">
 </head>
 <body>
+    <div class="actions-header">
+        <a href="{{ url_for('main.download', file_id=job_id) }}" class="btn btn-primary">Download the extracted text</a>
+        <button id="redo-process-btn" class="btn btn-warning">Re-do Process</button>
+        <a href="{{ url_for('main.index') }}" class="btn btn-secondary">Upload another PDF</a>
+    </div>
+
     <div class="container">
-        <h1>Preview Extracted Text</h1>
+        <div class="preview-header">
+            <h1>Preview Extracted Text</h1>
+        </div>
         <div class="extracted-text">
             <p>
                 <!-- Assume we mark OCR text with a specific delimiter in the backend -->
@@ -33,12 +29,23 @@
                 {% endfor %}
             </p>
         </div>
-
-        <div class="actions">
-            <a href="{{ url_for('main.download', file_id=job_id) }}">Download the extracted text</a>
-            <a href="{{ url_for('index') }}" class="btn btn-warning">Re-do Process</a>
-            <!-- Add any additional finalization process if needed -->
-        </div>
     </div>
+    
+    <script>
+        document.getElementById('redo-process-btn').addEventListener('click', function() {
+            // Show processing view and then redirect to re-extract text for the same job ID
+            document.querySelector('.container').innerHTML = `
+                <h2>Processing...</h2>
+                <p>Please wait while we re-process your file.</p>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            `;
+
+            setTimeout(function() {
+                window.location.href = "/redo/" + "{{ job_id }}";
+            }, 1000); // Adjust timing as needed for UX
+        });
+    </script>
 </body>
 </html>
