@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF to Text Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PDF to Text Converter</h1>
+            <p>Convert your PDFs to text with high accuracy</p>
+        </header>
+        
+        <form id="upload-form" action="{{ url_for('main.upload') }}" method="POST" enctype="multipart/form-data">
+            <div class="file-upload">
+                <label for="file">Choose a PDF file:</label>
+                <input type="file" id="file" name="file" accept=".pdf" required>
+            </div>
+            <button type="submit">Convert PDF</button>
+        </form>
+
+        <div id="progress-section" class="hidden">
+            <h2>Processing...</h2>
+            <p>Please wait while we process your file.</p>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

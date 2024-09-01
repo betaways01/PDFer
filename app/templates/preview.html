@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Extracted Text</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .ocr-text {
+            color: red; /* Different color for text extracted via OCR */
+            font-weight: bold;
+        }
+        .direct-text {
+            color: black; /* Standard color for directly extracted text */
+        }
+        .actions {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Preview Extracted Text</h1>
+        <div class="extracted-text">
+            <p>
+                <!-- Assume we mark OCR text with a specific delimiter in the backend -->
+                {% for line in extracted_text.splitlines() %}
+                    {% if line.startswith('[OCR]') %}
+                        <span class="ocr-text">{{ line[5:] }}</span><br>
+                    {% else %}
+                        <span class="direct-text">{{ line }}</span><br>
+                    {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+
+        <div class="actions">
+            <a href="{{ url_for('main.download', file_id=job_id) }}">Download the extracted text</a>
+            <a href="{{ url_for('index') }}" class="btn btn-warning">Re-do Process</a>
+            <!-- Add any additional finalization process if needed -->
+        </div>
+    </div>
+</body>
+</html>
